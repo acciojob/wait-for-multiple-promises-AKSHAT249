@@ -1,4 +1,3 @@
-//your JS code here. If required.
 function randomTime(){
 	return (Math.floor(Math.random() * 3)) + 1
 }
@@ -48,8 +47,10 @@ outputTable.innerHTML += `
 
 Promise.all([promise1(), promise2(), promise3()]).then(
 	(data) =>{
+		let totaltime = 0;
 		outputTable.innerHTML = ''
 		data.map( (item)=> {
+			totaltime += parseInt(item.slice(-1))
 			outputTable.innerHTML += `
 				<tr>
 					<td>${item.slice(0,item.length-1)}</td>
@@ -60,6 +61,14 @@ Promise.all([promise1(), promise2(), promise3()]).then(
 			`
 
 		} )
+
+		outputTable.innerHTML += `
+			<tr>
+				<td>Total</td>
+				<td>${totaltime}</td>
+			</tr>
+		
+		`
 		
 		
 
